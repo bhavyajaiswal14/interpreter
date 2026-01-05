@@ -1,15 +1,12 @@
 # C++ Interpreter
 
-This project is a C++ implementation of a programming language interpreter. Currently, it supports the tokenization (lexical analysis) stage of the interpretation process.
+This project is a C++ implementation of a programming language interpreter. Currently, it supports **tokenization** (lexical analysis) and **parsing** of expressions. The parser converts arithmetic and boolean expressions into a string representation (S-expressions).
 
 ## Project Overview
 
-The interpreter is being implemented in stages, with the first stage focusing on tokenization. The lexer recognizes various token types including:
-
-- Keywords (like `var`, `if`, `while`, etc.)
-- Identifiers (variable names)
-- Literals (strings and numbers)
-- Operators and punctuation
+The interpreter is being implemented in stages:
+1.  **Tokenization:** The lexer recognizes various token types including keywords, identifiers, literals, and operators.
+2.  **Parsing:** The parser uses a recursive descent approach to evaluate expressions and print their Abstract Syntax Tree (AST).
 
 ## Getting Started
 
@@ -31,6 +28,7 @@ The interpreter is being implemented in stages, with the first stage focusing on
 This will compile the project using CMake.
 
 ### Usage
+**Tokenization**
 
 To tokenize a file:
 
@@ -51,9 +49,46 @@ STRING "Hello, World!" Hello, World!
 RIGHT_PAREN ) null
 ```
 
+
+**Parsing Expressions**
+
+To parse an expression and see its string representation:
+```bash
+./build/interpreter parse path/to/your/file.ext
+```
+
+For an input like 1 + 2 * 3, the output will be an S-expression:
+```
+(+ 1 (* 2 3))
+```
+
 ## Features
 
 Current features include:
-- Tokenization of a source file
-- Recognition of keywords, identifiers, literals, operators, and punctuation
+
+**Tokenization**
+- Recognition of keywords (like var, if, while, etc.)
+
+- Identification of variable names (identifiers)
+
+- Handling of string and number literals
+
 - Basic error reporting for unterminated strings and unexpected characters
+
+
+**Parsing**
+- Recursive Descent Parser: Parses expressions with correct operator precedence.
+
+- Supported Expressions:
+
+    - Equality (==, !=)
+
+    - Comparison (<, <=, >, >=)
+
+    - Arithmetic (+, -, *, /)
+
+    - Unary (!, -)
+
+    - Grouping (( ... ))
+
+- S-Expression Output: Prints the parsed Abstract Syntax Tree (AST) in a standardized string format.
